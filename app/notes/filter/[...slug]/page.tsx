@@ -2,7 +2,7 @@ import { fetchNotesByTag } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 
 type Props = {
-  params: { slug: string[] };
+  params: Promise<{ slug: string[] }>;
 };
 
 export default async function NotesByTagPage({ params }: Props) {
