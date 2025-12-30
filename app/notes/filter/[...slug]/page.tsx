@@ -6,12 +6,17 @@ type Props = {
 };
 
 export default async function NotesByTagPage({ params }: Props) {
-  const tag = params.slug?.[0] === "all" ? undefined : params.slug?.[0];
+  const { slug } = await params;
+  const tag = slug[0] === "all" ? undefined : slug[0];
   const response = await fetchNotesByTag(tag);
 
   return (
     <div>
-      {response.notes.length > 0 && <NoteList notes={response.notes} />}
+      {response.notes.length > 0 ? (
+        <NoteList notes={response.notes} />
+      ) : (
+        <p>No notes found</p>
+      )}
     </div>
   );
 }

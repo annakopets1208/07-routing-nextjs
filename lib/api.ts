@@ -30,16 +30,12 @@ export const fetchNotes = async (
   return response.data;
 };
 
-export const deleteNote = async (id: string): Promise<Note> => {
-  const deleteResp = await axios.delete<Note>(
-    `https://notehub-public.goit.study/api/notes/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${myKey}`,
-      },
-    }
-  );
-  return deleteResp.data;
+export const deleteNote = async (id: string): Promise<void> => {
+  await axios.delete(`https://notehub-public.goit.study/api/notes/${id}`, {
+    headers: {
+      Authorization: `Bearer ${myKey}`,
+    },
+  });
 };
 
 export const createNote = async (note: NoteMin): Promise<Note> => {
