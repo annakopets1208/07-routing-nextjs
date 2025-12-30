@@ -1,0 +1,17 @@
+import { fetchNotesByTag } from "@/lib/api";
+import NoteList from "@/components/NoteList/NoteList";
+
+type Props = {
+  params: { slug: string[] };
+};
+
+export default async function NotesByTagPage({ params }: Props) {
+  const tag = params.slug?.[0] === "all" ? undefined : params.slug?.[0];
+  const response = await fetchNotesByTag(tag);
+
+  return (
+    <div>
+      {response.notes.length > 0 && <NoteList notes={response.notes} />}
+    </div>
+  );
+}
