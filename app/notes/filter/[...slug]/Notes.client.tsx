@@ -10,7 +10,11 @@ import Pagination from "@/components/Pagination/Pagination";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
-export default function App() {
+interface NotesClientProps {
+  initialTag?: string;
+}
+
+export default function NotesClient({ initialTag }: NotesClientProps) {
   const [name, setName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,8 +28,11 @@ export default function App() {
   );
 
   const { data } = useQuery({
-    queryKey: ["notes", name, currentPage],
-    queryFn: () => fetchNotes(name, currentPage),
+    queryKey: [
+      "notes",
+      { page: currentPage, searchValue: name, tag: initialTag },
+    ],
+    queryFn: () => fetchNotes(name, currentPage, initialTag),
     placeholderData: keepPreviousData,
   });
 
@@ -34,9 +41,9 @@ export default function App() {
       <div className={css.app}>
         <header className={css.toolbar}>
           <SearchBox onChange={handleChange} />
-          {data?.notes?.length !== 0 && (data?.totalPages ?? 0) > 1 && (
+          {data?.totalPages && data.totalPages > 1 && (
             <Pagination
-              totalPages={data?.totalPages ?? 0}
+              totalPages={data?.totalPages}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
@@ -45,7 +52,11 @@ export default function App() {
             Create note +
           </button>
         </header>
-        <NoteList notes={data?.notes ?? []} />
+        {data?.notes && data.notes.length > 0 ? (
+          <NoteList notes={data.notes} />
+        ) : (
+          <p>No notes found</p>
+        )}
         {isModalOpen && (
           <Modal onClose={() => setIsModalOpen(false)}>
             <NoteForm onClose={() => setIsModalOpen(false)} />
