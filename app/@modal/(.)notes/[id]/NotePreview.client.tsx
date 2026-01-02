@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Modal from "@/components/Modal/Modal";
 import { fetchNoteById } from "@/lib/api";
 import css from "./NotePreview.module.css";
+import type { Note } from "@/types/note";
 
 export default function NotePreview() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function NotePreview() {
     data: note,
     isLoading,
     error,
-  } = useQuery({
+  } = useQuery<Note>({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
@@ -35,6 +36,9 @@ export default function NotePreview() {
             <h2>{note.title}</h2>
             <p className={css.content}>{note.content}</p>
             <span className={css.tag}>{note.tag}</span>
+            <p className={css.date}>
+              Created at: {new Date(note.createdAt).toLocaleString()}
+            </p>
           </div>
         )}
       </div>
