@@ -64,20 +64,3 @@ export const fetchNoteById = async (id: string): Promise<Note> => {
   );
   return res.data;
 };
-
-export const fetchNotesByTag = async (tag?: string): Promise<fullResp> => {
-  const response = await axios.get<fullResp>(
-    "https://notehub-public.goit.study/api/notes",
-    {
-      params: {
-        perPage: 12,
-        ...(tag ? { tag } : {}),
-      },
-      headers: {
-        Authorization: `Bearer ${myKey}`,
-      },
-    }
-  );
-
-  return response.data;
-};
