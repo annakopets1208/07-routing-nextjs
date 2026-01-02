@@ -11,10 +11,10 @@ import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
 interface NotesClientProps {
-  initialTag?: string;
+  tag: string;
 }
 
-export default function NotesClient({ initialTag }: NotesClientProps) {
+export default function NotesClient({ tag }: NotesClientProps) {
   const [name, setName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,11 +28,8 @@ export default function NotesClient({ initialTag }: NotesClientProps) {
   );
 
   const { data } = useQuery({
-    queryKey: [
-      "notes",
-      { page: currentPage, searchValue: name, tag: initialTag },
-    ],
-    queryFn: () => fetchNotes(name, currentPage, initialTag),
+    queryKey: ["notes", { page: currentPage, searchValue: name, tag: tag }],
+    queryFn: () => fetchNotes(name, currentPage, tag),
     placeholderData: keepPreviousData,
   });
 
@@ -41,19 +38,21 @@ export default function NotesClient({ initialTag }: NotesClientProps) {
       <div className={css.app}>
         <header className={css.toolbar}>
           <SearchBox onChange={handleChange} />
-          {data?.totalPages && data.totalPages > 1 && (
-            <Pagination
-              totalPages={data?.totalPages}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
-          )}
           <button className={css.button} onClick={() => setIsModalOpen(true)}>
             Create note +
           </button>
         </header>
         {data?.notes && data.notes.length > 0 ? (
-          <NoteList notes={data.notes} />
+          <>
+            <NoteList notes={data.notes} />
+            {data?.totalPages > 1 && (
+              <Pagination
+                totalPages={data?.totalPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
+          </>
         ) : (
           <p>No notes found</p>
         )}
