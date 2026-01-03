@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["D:/Анюта/vs code/Projects/07-routing-nextjs/app/notes/filter/[...slug]/error.tsx"],"sourcesContent":["\"use client\";\r\n\r\ntype Props = {\r\n  error: Error;\r\n};\r\n\r\nconst Error = ({ error }: Props) => {\r\n  return (\r\n    <div>\r\n      <p>Could not fetch the list of notes. {error.message}</p>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Error;\r\n"],"names":["c","_c","Props","error","Error","t0","$","$i","Symbol","for","t1","message"],"mappings":";;;;;AAAa,SAAAA,CAAA,IAAAC,EAAA;AAAb,YAAY;;;AAMZ,eAAcI,EAAA;IAAA,MAAAC,CAAA,OAAAL,gLAAA,EAAA;IAAA,IAAAK,CAAA,CAAA,EAAA,KAAA,oEAAA;QAAA,IAAA,IAAAC,EAAA,GAAA,GAAAA,EAAA,GAAA,GAAAA,EAAA,IAAA,EAAA;YAAAD,CAAA,CAAAC,EAAA,CAAA,GAAAC,MAAA,CAAAC,GAAA,CAAA;QAAA;QAAAH,CAAA,CAAA,EAAA,GAAA;IAAA;IAAC,MAAA,EAAAH,KAAAA,EAAA,GAAAE,EAAgB;IAAA,IAAAK,EAAA;IAAA,IAAAJ,CAAA,CAAA,EAAA,KAAAH,KAAA,CAAAQ,OAAA,EAAA;QAE3BD,EAAA,iBAAA,6LAAA,GAEM;oCADJ,6LAAA,CAAyD;;oBAAtD,mCAAoC;oBAAAP,KAAK,CAAAQ,OAAO,CAAE,EAArD,CAAyD,CAC3D,EAFA,GAEM;;;;;;;;;;;;QAAAL,CAAA,CAAA,EAAA,GAAAH,KAAA,CAAAQ,OAAA;QAAAL,CAAA,CAAA,EAAA,GAAAI,EAAA;IAAA,OAAA;QAAAA,EAAA,GAAAJ,CAAA,CAAA,EAAA;IAAA;IAAA,OAFNI,EAEM;AAAA,CAET;KANKN,KAAK;uCAQIA,KAAK","ignoreList":[]}}]
+}

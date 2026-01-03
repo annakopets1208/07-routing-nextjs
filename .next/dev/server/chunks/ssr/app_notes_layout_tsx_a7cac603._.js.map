@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["file:///D:/%D0%90%D0%BD%D1%8E%D1%82%D0%B0/vs%20code/Projects/07-routing-nextjs/app/notes/layout.tsx"],"sourcesContent":["// import {\r\n//   HydrationBoundary,\r\n//   dehydrate,\r\n//   QueryClient,\r\n// } from \"@tanstack/react-query\";\r\n// import { fetchNotes } from \"@/lib/api\";\r\n// import NotesClient from \"./filter/[...slug]/Notes.client\";\r\n\r\n// export default async function NotesLayout({\r\n//   children,\r\n// }: {\r\n//   children: React.ReactNode;\r\n// }) {\r\n//   const queryClient = new QueryClient();\r\n\r\n//   await queryClient.prefetchQuery({\r\n//     queryKey: [\"notes\", \"\", 1],\r\n//     queryFn: () => fetchNotes(\"\", 1),\r\n//   });\r\n\r\n//   return (\r\n//     <HydrationBoundary state={dehydrate(queryClient)}>\r\n//       <NotesClient />\r\n//       {children}\r\n//     </HydrationBoundary>\r\n//   );\r\n// }\r\n"],"names":[],"mappings":"AAAA,WAAW;AACX,uBAAuB;AACvB,eAAe;AACf,iBAAiB;AACjB,kCAAkC;AAClC,0CAA0C;AAC1C,6DAA6D;AAE7D,8CAA8C;AAC9C,cAAc;AACd,OAAO;AACP,+BAA+B;AAC/B,OAAO;AACP,2CAA2C;AAE3C,sCAAsC;AACtC,kCAAkC;AAClC,wCAAwC;AACxC,QAAQ;AAER,aAAa;AACb,yDAAyD;AACzD,wBAAwB;AACxB,mBAAmB;AACnB,2BAA2B;AAC3B,OAAO;AACP,IAAI"}}]
+}

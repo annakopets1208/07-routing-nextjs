@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/%D0%90%D0%BD%D1%8E%D1%82%D0%B0/vs%20code/Projects/07-routing-nextjs/app/notes/filter/%5B...slug%5D/page.tsx"],"sourcesContent":["import {\r\n  HydrationBoundary,\r\n  dehydrate,\r\n  QueryClient,\r\n} from \"@tanstack/react-query\";\r\nimport { fetchNotes } from \"@/lib/api\";\r\nimport App from \"./Notes.client\";\r\n\r\nexport default async function NotesPage() {\r\n  const queryClient = new QueryClient();\r\n\r\n  await queryClient.prefetchQuery({\r\n    queryKey: [\"notes\", \"\", 1],\r\n    queryFn: () => fetchNotes(\"\", 1),\r\n  });\r\n\r\n  return (\r\n    <HydrationBoundary state={dehydrate(queryClient)}>\r\n      <App />\r\n    </HydrationBoundary>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;AAAA;AAAA;AAKA;AACA;;;;;AAEe,eAAe;IAC5B,MAAM,cAAc,IAAI,4LAAW;IAEnC,MAAM,YAAY,aAAa,CAAC;QAC9B,UAAU;YAAC;YAAS;YAAI;SAAE;QAC1B,SAAS,IAAM,IAAA,wHAAU,EAAC,IAAI;IAChC;IAEA,qBACE,8OAAC,yMAAiB;QAAC,OAAO,IAAA,wLAAS,EAAC;kBAClC,cAAA,8OAAC,uKAAG;;;;;;;;;;AAGV"}}]
+}
