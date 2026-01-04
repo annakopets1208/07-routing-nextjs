@@ -20,13 +20,14 @@ export const fetchNotes = async (
         search: title,
         perPage: 12,
         page,
-        ...(tag ? { tag } : {}),
+        ...(tag && tag !== "all" ? { tag } : {}),
       },
       headers: {
         Authorization: `Bearer ${myKey}`,
       },
     }
   );
+
   return response.data;
 };
 
